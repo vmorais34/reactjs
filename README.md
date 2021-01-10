@@ -12,5 +12,8 @@ Até aqui já passei por algumas linguagens e dia-a-dia me esforço para melhora
 2.CSS3
 3. Javascript
 4. ReactJS 
+5. Git e Github
+6. Bitbucket
+Fit pull
 
 Atualizado em: 10/01/2021 por Vinicius Morais
