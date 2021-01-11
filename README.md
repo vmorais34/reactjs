@@ -14,6 +14,6 @@ Até aqui já passei por algumas linguagens e dia-a-dia me esforço para melhora
 4. ReactJS 
 5. Git e Github
 6. Bitbucket
-Fit pull
+Git pull
 
 Atualizado em: 10/01/2021 por Vinicius Morais
