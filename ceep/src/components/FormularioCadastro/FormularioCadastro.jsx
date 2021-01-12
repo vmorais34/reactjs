@@ -1,44 +1,63 @@
 import React, { Component } from "react";
 import "./estilo.css";
 class FormularioCadastro extends Component {
+
+
+  //Usando construtor para definir atributos
   constructor(props){
     super(props);
-    this.titulo="";
-    this.texto="";
+    this.titulo ="";
+    this.texto ="";
+    this.categoria = "Sem Categoria";
   }
 
-  _handleMundacaTitulo(evento){
-      this.titulo = evento.target.value;
-      evento.stopPropagation();
-  }
-
-  _handleMundacaTexto(evento){
-    this.texto = evento.target.value;
+  _handlemudancaCategoria(evento){
     evento.stopPropagation();
+    this.categoria = evento.target.value;
   }
 
-  criarNota(evento){
+  //Propriedades handle privadas
+  _handleMudancaTitulo(evento){
+    evento.stopPropagation();
+    this.titulo = evento.target.value;
+  }
+
+  _handleMudancaTexto(evento){
+    evento.stopPropagation();
+    this.texto = evento.target.value;
+  }
+
+  _criarNota(evento){
     evento.preventDefault();
     evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);
+    this.props.criarNota(this.titulo, this.texto, this.categoria);
+    
   }
+
   render() {
     return (
       <form className="form-cadastro"
-            onSubmit={this.criarNota.bind(this)}
+        onSubmit={this._criarNota.bind(this)}
       >
+        <select 
+        onChange={this._handlemudancaCategoria.bind(this)}
+        className="form-cadastro_input">
+          <option>Sem Categoria</option>
+          {this.props.categorias.map(categoria =>{
+            return <option>{categoria}</option>
+          })}
+        </select>
         <input
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
-          //This é dinamico e retorna erro sem o binding
-          onChange={this._handleMundacaTitulo.bind(this)}
+          onChange={this._handleMudancaTitulo.bind(this)}
         />
         <textarea
           rows={15}
           placeholder="Escreva sua nota..."
           className="form-cadastro_input"
-          onChange={this._handleMundacaTexto.bind(this)}
+          onChange={this._handleMudancaTexto.bind(this)}
         />
         <button className="form-cadastro_input form-cadastro_submit">
           Criar Nota
